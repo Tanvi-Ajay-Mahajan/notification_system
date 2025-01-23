@@ -1,4 +1,4 @@
-const db = require('../config/DataBase'); // Adjust the path to your database connection file
+const db = require('../config/database'); // Adjust the path to your database connection file
 const sendEmail = require('..email'); // Adjust the path to your email sending module
 const sendSMS = require('..sms'); // Adjust the path to your SMS sending module
 const sendPushNotification = require('../config/fireBase'); // Adjust the path to your push notification module
