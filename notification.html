@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Notification System</h1>
+    </header>
+    <main>
+        <form id="notificationForm">
+            <div class="form-group">
+                <label for="userId">User ID:</label>
+                <input type="text" id="userId" name="userId" placeholder="Enter user ID" required>
+            </div>
+
+            <div class="form-group">
+                <label for="type">Notification Type:</label>
+                <select id="type" name="type" required>
+                    <option value="reminder">Reminder</option>
+                    <option value="alert">Alert</option>
+                    <option value="promotion">Promotion</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="channel">Notification Channel:</label>
+                <select id="channel" name="channel" required>
+                    <option value="email">Email</option>
+                    <option value="sms">SMS</option>
+                    <option value="push">Push Notification</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="emailGroup" style="display: none;">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter email">
+            </div>
+
+            <div class="form-group" id="phoneGroup" style="display: none;">
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter phone number">
+            </div>
+
+            <div class="form-group" id="pushGroup" style="display: none;">
+                <label for="pushToken">Push Token:</label>
+                <input type="text" id="pushToken" name="pushToken" placeholder="Enter push token">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" placeholder="Enter your message" rows="4" required></textarea>
+            </div>
+
+            <button type="submit">Send Notification</button>
+        </form>
+    </main>
+    <footer>
+        <p>© 2025 Notification System</p>
+    </footer>
+
+    <script>
+        const channelSelect = document.getElementById('channel');
+        const emailGroup = document.getElementById('emailGroup');
+        const phoneGroup = document.getElementById('phoneGroup');
+        const pushGroup = document.getElementById('pushGroup');
+
+        channelSelect.addEventListener('change', () => {
+            emailGroup.style.display = 'none';
+            phoneGroup.style.display = 'none';
+            pushGroup.style.display = 'none';
+
+            if (channelSelect.value === 'email') {
+                emailGroup.style.display = 'block';
+            } else if (channelSelect.value === 'sms') {
+                phoneGroup.style.display = 'block';
+            } else if (channelSelect.value === 'push') {
+                pushGroup.style.display = 'block';
+            }
+        });
+
+        document.getElementById('notificationForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Notification sent successfully!');
+        });
+    </script>
+    <script src="DataBase.js"></script>
+    <script src="fireBase.js"></script>
+    <script src="package.js"></script>
+    <script src="envrimennt.env"></script>
+    <script src="controllers/sendNotification.js"></script>
+    <script src="routes.js"></script>
+    <script src="notificationRoute.js.js"></script>
+    <script src="serves.js"></script>
+    <script src="email.js"></script>
+    <script src="index.js"></script>
+    <script src="sms.js"></script>
+</body>
+</html>
