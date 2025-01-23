@@ -74,3 +74,23 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
+const sendPushNotification = (token, title, body) => {
+  const message = {
+      notification: { title, body },
+      token
+  };
+
+  return admin.messaging().send(message)
+      .then((response) => {
+          console.log('Push notification sent successfully:', response);
+      })
+      .catch((error) => {
+          console.error('Error sending push notification:', error);
+          throw error;  // Re-throw the error to be handled by the route
+      });
+};
+app.get('/', (req, res) => {
+  res.send('Server is running!');
+});
